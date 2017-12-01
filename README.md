@@ -3,6 +3,7 @@
 
 ## Table of Contents
 - [Init Package](#init-package)
+- [Design Code Structure](#design-code-sturcture)
 
 ## Init Package
 > npm init -y
@@ -36,3 +37,9 @@
 }
 
 ```
+
+## Design Code Sturcture
+|_config
+|_client
+|_server
+|_package.json
