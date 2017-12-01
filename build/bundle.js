@@ -94,7 +94,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 var Home = function Home() {
   return _react2.default.createElement(
-    'div',
+    _react.Fragment,
     null,
     'Home Page'
   );
@@ -127,7 +127,7 @@ var app = (0, _express2.default)();
 var port = process.env.PORT || 3000;
 
 app.use(_express2.default.static('public'));
-app.get('/', function (req, res) {
+app.get('*', function (req, res) {
   res.send((0, _renderer2.default)(req));
 });
 
@@ -216,15 +216,47 @@ var _Home = __webpack_require__(2);
 
 var _Home2 = _interopRequireDefault(_Home);
 
+var _UsersList = __webpack_require__(9);
+
+var _UsersList2 = _interopRequireDefault(_UsersList);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = function () {
   return _react2.default.createElement(
     'div',
     null,
-    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default })
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _Home2.default }),
+    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/users', component: _UsersList2.default })
   );
 };
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var UsersList = function UsersList() {
+  return _react2.default.createElement(
+    _react.Fragment,
+    null,
+    'Users List'
+  );
+};
+
+exports.default = UsersList;
 
 /***/ })
 /******/ ]);
