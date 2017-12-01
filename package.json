@@ -27,6 +27,7 @@
   },
   "homepage": "https://github.com/yuttasakcom/ReactReduxSSR#readme",
   "dependencies": {
+    "axios": "^0.17.1",
     "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
