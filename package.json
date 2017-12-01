@@ -17,11 +17,20 @@
     "type": "git",
     "url": "git+https://github.com/yuttasakcom/ReactReduxSSR.git"
   },
-  "keywords": ["react redux ssr"],
+  "keywords": [
+    "react redux ssr"
+  ],
   "author": "Yuttasak Pannawat<yuttasakcom@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/yuttasakcom/ReactReduxSSR/issues"
   },
-  "homepage": "https://github.com/yuttasakcom/ReactReduxSSR#readme"
+  "homepage": "https://github.com/yuttasakcom/ReactReduxSSR#readme",
+  "dependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
+    "webpack": "^3.9.1",
+    "webpack-merge": "^4.1.1"
+  }
 }
