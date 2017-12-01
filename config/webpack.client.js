@@ -9,7 +9,7 @@ function resolve(dir) {
 const config = {
     entry: resolve('client/client.js'),
     output: {
-        path: resolve('dist-client'),
+        path: resolve('public'),
         filename: 'bundle.js'
     }
 }
