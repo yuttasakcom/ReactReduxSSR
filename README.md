@@ -40,13 +40,13 @@
 
 ## Design Code Sturcture
 ```
-|_config
+- config
   |_webpack.client.js
   |_webpack.server.js
   |_webpack.base.js
-|_client
+- client
   |_client.js
-|_server
+- server
   |_server.js
-|_package.json
+- package.json
 ```
