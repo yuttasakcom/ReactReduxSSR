@@ -5,7 +5,7 @@
 - [Init Package](#init-package)
 
 ## Init Package
-> npm int -y
+> npm init -y
 ```json
 {
   "name": "react-redux-ssr",
