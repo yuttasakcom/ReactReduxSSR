@@ -1,7 +1,27 @@
-import React, { Fragment } from 'react'
+import React, { Component, Fragment } from 'react'
+import { connect } from 'react-redux'
+import { fetchUsers } from '@/actions'
 
-const UsersList = () => (
-  <Fragment>Users List</Fragment>
-)
+class UsersList extends Component {
+  componentWillMount() {
+    this.props.fetchUsers()
+  }
 
-export default UsersList
+  renderUsers() {
+    return this.props.users.map(user => {
+      return <li key={user.id}>{user.name}</li>
+    })
+  }
+
+  render() {
+    return (
+      <Fragment>
+        Here's a big list of users:
+        <ul>{this.renderUsers()}</ul>
+      </Fragment>
+    )
+  }
+}
+
+const mapStateToProps = ({users}) => ({users})
+export default connect(mapStateToProps, { fetchUsers })(UsersList)
