@@ -39,7 +39,9 @@
 ```
 
 ## Design Code Sturcture
+```
 |_config
 |_client
 |_server
 |_package.json
+```
