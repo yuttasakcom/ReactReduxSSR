@@ -1,5 +1,5 @@
 ## React Redux SSR
-> สร้าง React Redux SSR from scratch
+> Create React Redux SSR from scratch
 
 ## Table of Contents
 - [Init Package](#init-package)
