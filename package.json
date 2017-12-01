@@ -27,9 +27,12 @@
   },
   "homepage": "https://github.com/yuttasakcom/ReactReduxSSR#readme",
   "dependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-preset-env": "^1.6.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
     "webpack": "^3.9.1",
     "webpack-merge": "^4.1.1",
     "webpack-node-externals": "^1.6.0"
