@@ -71,18 +71,6 @@ module.exports = require("react");
 
 /***/ }),
 /* 1 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-router-config");
-
-/***/ }),
-/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -161,6 +149,18 @@ var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
     };
   }();
 };
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-redux");
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-config");
 
 /***/ }),
 /* 4 */
@@ -243,7 +243,7 @@ var _createStore = __webpack_require__(19);
 
 var _createStore2 = _interopRequireDefault(_createStore);
 
-var _reactRouterConfig = __webpack_require__(2);
+var _reactRouterConfig = __webpack_require__(3);
 
 var _routes = __webpack_require__(5);
 
@@ -325,9 +325,9 @@ var _server = __webpack_require__(13);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(2);
 
-var _reactRouterConfig = __webpack_require__(2);
+var _reactRouterConfig = __webpack_require__(3);
 
 var _serializeJavascript = __webpack_require__(14);
 
@@ -355,7 +355,7 @@ exports.default = function (req, store) {
     )
   ));
 
-  return '\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8">\n      <meta name="viewport" content="width=device-width, initial-scale=1.0">\n      <meta http-equiv="X-UA-Compatible" content="ie=edge">\n      <title>React Redux SSR</title>\n    </head>\n    <body>\n      <div id="root">' + content + '</div>\n      <script>\n        window.INITIAL_STATE = ' + (0, _serializeJavascript2.default)(store.getState()) + '\n      </script>\n      <script src="bundle.js"></script>\n    </body>\n    </html>\n  ';
+  return '\n    <!DOCTYPE html>\n    <html lang="en">\n    <head>\n      <meta charset="UTF-8">\n      <meta name="viewport" content="width=device-width, initial-scale=1.0">\n      <meta http-equiv="X-UA-Compatible" content="ie=edge">\n      <title>React Redux SSR</title>\n      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">\n    </head>\n    <body>\n      <div id="root">' + content + '</div>\n      <script>\n        window.INITIAL_STATE = ' + (0, _serializeJavascript2.default)(store.getState()) + '\n      </script>\n      <script src="bundle.js"></script>\n      <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>\n      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>\n      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>\n    </body>\n    </html>\n  ';
 };
 
 /***/ }),
@@ -416,9 +416,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(3);
+var _actions = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -500,7 +500,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterConfig = __webpack_require__(2);
+var _reactRouterConfig = __webpack_require__(3);
 
 var _Header = __webpack_require__(18);
 
@@ -541,9 +541,9 @@ var _react2 = _interopRequireDefault(_react);
 
 var _reactRouterDom = __webpack_require__(4);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(3);
+var _actions = __webpack_require__(1);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -587,25 +587,102 @@ var Header = function (_Component) {
           'header',
           null,
           _react2.default.createElement(
-            'h1',
-            null,
+            'nav',
+            { className: 'navbar navbar-expand-lg navbar-light bg-light' },
             _react2.default.createElement(
-              _reactRouterDom.Link,
-              { to: '/' },
-              'Header'
+              'div',
+              { className: 'container' },
+              _react2.default.createElement(
+                'a',
+                { className: 'navbar-brand', href: '#' },
+                'Navbar'
+              ),
+              _react2.default.createElement(
+                'button',
+                { className: 'navbar-toggler', type: 'button', 'data-toggle': 'collapse', 'data-target': '#navbarSupportedContent', 'aria-controls': 'navbarSupportedContent', 'aria-expanded': 'false', 'aria-label': 'Toggle navigation' },
+                _react2.default.createElement('span', { className: 'navbar-toggler-icon' })
+              ),
+              _react2.default.createElement(
+                'div',
+                { className: 'collapse navbar-collapse', id: 'navbarSupportedContent' },
+                _react2.default.createElement(
+                  'ul',
+                  { className: 'navbar-nav mr-auto' },
+                  _react2.default.createElement(
+                    'li',
+                    { className: 'nav-item active' },
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'nav-link', href: '#' },
+                      'Home ',
+                      _react2.default.createElement(
+                        'span',
+                        { className: 'sr-only' },
+                        '(current)'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'li',
+                    { className: 'nav-item' },
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'nav-link', href: '#' },
+                      'Link'
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'li',
+                    { className: 'nav-item dropdown' },
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'nav-link dropdown-toggle', href: '#', id: 'navbarDropdown', role: 'button', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
+                      'Dropdown'
+                    ),
+                    _react2.default.createElement(
+                      'div',
+                      { className: 'dropdown-menu', 'aria-labelledby': 'navbarDropdown' },
+                      _react2.default.createElement(
+                        'a',
+                        { className: 'dropdown-item', href: '#' },
+                        'Action'
+                      ),
+                      _react2.default.createElement(
+                        'a',
+                        { className: 'dropdown-item', href: '#' },
+                        'Another action'
+                      ),
+                      _react2.default.createElement('div', { className: 'dropdown-divider' }),
+                      _react2.default.createElement(
+                        'a',
+                        { className: 'dropdown-item', href: '#' },
+                        'Something else here'
+                      )
+                    )
+                  ),
+                  _react2.default.createElement(
+                    'li',
+                    { className: 'nav-item' },
+                    _react2.default.createElement(
+                      'a',
+                      { className: 'nav-link disabled', href: '#' },
+                      'Disabled'
+                    )
+                  )
+                ),
+                _react2.default.createElement(
+                  'form',
+                  { className: 'form-inline my-2 my-lg-0' },
+                  _react2.default.createElement('input', { className: 'form-control mr-sm-2', type: 'search', placeholder: 'Search', 'aria-label': 'Search' }),
+                  _react2.default.createElement(
+                    'button',
+                    { className: 'btn btn-outline-success my-2 my-sm-0', type: 'submit' },
+                    'Search'
+                  )
+                )
+              )
             )
-          ),
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/users' },
-            'Users'
-          ),
-          _react2.default.createElement(
-            _reactRouterDom.Link,
-            { to: '/admins' },
-            'Admins'
-          ),
-          authButton
+          )
         )
       );
     }
@@ -704,7 +781,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _actions = __webpack_require__(3);
+var _actions = __webpack_require__(1);
 
 exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -741,7 +818,7 @@ exports.default = function () {
   }
 };
 
-var _actions = __webpack_require__(3);
+var _actions = __webpack_require__(1);
 
 /***/ }),
 /* 24 */
