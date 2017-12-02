@@ -533,6 +533,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
@@ -541,59 +543,83 @@ var _reactRouterDom = __webpack_require__(4);
 
 var _reactRedux = __webpack_require__(1);
 
+var _actions = __webpack_require__(3);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Header = function Header(_ref) {
-  var auth = _ref.auth;
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  console.log(auth);
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-  var authButton = auth ? _react2.default.createElement(
-    'a',
-    { href: '/api/logout' },
-    'Logout'
-  ) : _react2.default.createElement(
-    'a',
-    { href: '/api/auth/google' },
-    'Login'
-  );
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-  return _react2.default.createElement(
-    _react.Fragment,
-    null,
-    _react2.default.createElement(
-      'header',
-      null,
-      _react2.default.createElement(
-        'h1',
+var Header = function (_Component) {
+  _inherits(Header, _Component);
+
+  function Header() {
+    _classCallCheck(this, Header);
+
+    return _possibleConstructorReturn(this, (Header.__proto__ || Object.getPrototypeOf(Header)).apply(this, arguments));
+  }
+
+  _createClass(Header, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      this.props.fetchCurrentUser();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var authButton = this.props.auth ? _react2.default.createElement(
+        'a',
+        { href: '/api/logout' },
+        'Logout'
+      ) : _react2.default.createElement(
+        'a',
+        { href: '/api/auth/google' },
+        'Login'
+      );
+
+      return _react2.default.createElement(
+        _react.Fragment,
         null,
         _react2.default.createElement(
-          _reactRouterDom.Link,
-          { to: '/' },
-          'Header'
+          'header',
+          null,
+          _react2.default.createElement(
+            'h1',
+            null,
+            _react2.default.createElement(
+              _reactRouterDom.Link,
+              { to: '/' },
+              'Header'
+            )
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/users' },
+            'Users'
+          ),
+          _react2.default.createElement(
+            _reactRouterDom.Link,
+            { to: '/admins' },
+            'Admins'
+          ),
+          authButton
         )
-      ),
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/users' },
-        'Users'
-      ),
-      _react2.default.createElement(
-        _reactRouterDom.Link,
-        { to: '/admins' },
-        'Admins'
-      ),
-      authButton
-    )
-  );
-};
+      );
+    }
+  }]);
 
-var mapStateToProps = function mapStateToProps(_ref2) {
-  var auth = _ref2.auth;
+  return Header;
+}(_react.Component);
+
+var mapStateToProps = function mapStateToProps(_ref) {
+  var auth = _ref.auth;
   return { auth: auth };
 };
 
-exports.default = (0, _reactRedux.connect)(mapStateToProps)(Header);
+exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchCurrentUser: _actions.fetchCurrentUser })(Header);
 
 /***/ }),
 /* 19 */
