@@ -1,3 +1,4 @@
+const webpack = require('webpack')
 const webpackMerge = require('webpack-merge')
 const webpackBase = require('./webpack.base')
 const path = require('path')
@@ -18,7 +19,7 @@ const config = {
       'process.env': {
         'NODE_ENV': JSON.stringify(process.env.NODE_ENV)
       }
-    }),
+    })
   ]
 }
 
