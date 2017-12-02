@@ -11,7 +11,7 @@ import reducers from '@/reducers'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from '@/routes'
 
-const store = createStore(reducers, {}, applyMiddleware(thunk))
+const store = createStore(reducers, window.INITIAL_STATE, applyMiddleware(thunk))
 
 ReactDOM.hydrate(
   <Provider store={store}>

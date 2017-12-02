@@ -5,7 +5,6 @@ import { Provider } from 'react-redux'
 import { renderRoutes } from 'react-router-config'
 
 import Routes from '@/routes'
-import Home from '@/pages/Home'
 
 export default (req, store) => {
 
@@ -28,6 +27,9 @@ export default (req, store) => {
     </head>
     <body>
       <div id="root">${content}</div>
+      <script>
+        window.INITIAL_STATE = ${JSON.stringify(store.getState())}
+      </script>
       <script src="bundle.js"></script>
     </body>
     </html>
