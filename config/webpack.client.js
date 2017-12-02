@@ -11,7 +11,8 @@ const config = {
     output: {
         path: resolve('public'),
         filename: 'bundle.js'
-    }
+    },
+    devtool: 'cheap-module-eval-source-map'
 }
 
 module.exports = webpackMerge(webpackBase, config)
