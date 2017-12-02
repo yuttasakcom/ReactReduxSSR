@@ -10,8 +10,8 @@
     "dev": "npm-run-all --parallel dev:*",
     "prod:build-client": "webpack --config config/webpack.client.js",
     "prod:build-server": "webpack --config config/webpack.server.js",
-    "start": "node build/bundle.js",
-    "heroku-postbuild": "npm run prod:build-client && npm run prod:build-server"
+    "heroku-postbuild": "npm run prod:build-client && npm run prod:build-server",
+    "start": "node build/bundle.js"
   },
   "repository": {
     "type": "git",
