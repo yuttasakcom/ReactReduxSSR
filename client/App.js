@@ -6,7 +6,7 @@ import Header from '@/components/Header'
 const App = ({ route }) => (
   <Fragment>
     <Header />
-    {renderRoutes(route.routes)}
+    { renderRoutes(route.routes) }
   </Fragment>
 )
 
