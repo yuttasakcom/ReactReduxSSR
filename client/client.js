@@ -11,7 +11,17 @@ import reducers from '@/reducers'
 import { BrowserRouter } from 'react-router-dom'
 import Routes from '@/routes'
 
-const store = createStore(reducers, window.INITIAL_STATE, applyMiddleware(thunk))
+import axios from 'axios'
+
+const axiosInstance = axios.create({
+  baseURL: '/api'
+})
+
+const store = createStore(
+  reducers,
+  window.INITIAL_STATE,
+  applyMiddleware(thunk.withExtraArgument(axiosInstance))
+)
 
 ReactDOM.hydrate(
   <Provider store={store}>
