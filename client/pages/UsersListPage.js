@@ -16,8 +16,10 @@ class UsersList extends Component {
   render() {
     return (
       <Fragment>
-        Here's a big list of users:
-        <ul>{this.renderUsers()}</ul>
+        <div className="container">
+          Here's a big list of users:
+          <ul>{this.renderUsers()}</ul>
+        </div>
       </Fragment>
     )
   }

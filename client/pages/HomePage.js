@@ -1,7 +1,11 @@
 import React, { Fragment } from 'react'
 
 const HomePage = () => (
-  <Fragment>Home Page</Fragment>
+  <Fragment>
+    <div className="container">
+      Home Page
+    </div>
+  </Fragment>
 )
 
 export default {

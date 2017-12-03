@@ -391,7 +391,11 @@ var HomePage = function HomePage() {
   return _react2.default.createElement(
     _react.Fragment,
     null,
-    'Home Page'
+    _react2.default.createElement(
+      "div",
+      { className: "container" },
+      "Home Page"
+    )
   );
 };
 
@@ -459,11 +463,15 @@ var UsersList = function (_Component) {
       return _react2.default.createElement(
         _react.Fragment,
         null,
-        'Here\'s a big list of users:',
         _react2.default.createElement(
-          'ul',
-          null,
-          this.renderUsers()
+          'div',
+          { className: 'container' },
+          'Here\'s a big list of users:',
+          _react2.default.createElement(
+            'ul',
+            null,
+            this.renderUsers()
+          )
         )
       );
     }
@@ -572,11 +580,11 @@ var Header = function (_Component) {
     value: function render() {
       var authButton = this.props.auth ? _react2.default.createElement(
         'a',
-        { href: '/api/logout' },
+        { className: 'btn btn-danger', href: '/api/logout' },
         'Logout'
       ) : _react2.default.createElement(
         'a',
-        { href: '/api/auth/google' },
+        { className: 'btn btn-success', href: '/api/auth/google' },
         'Login'
       );
 
@@ -588,14 +596,14 @@ var Header = function (_Component) {
           null,
           _react2.default.createElement(
             'nav',
-            { className: 'navbar navbar-expand-lg navbar-light bg-light' },
+            { className: 'navbar navbar-expand-sm navbar-dark bg-dark' },
             _react2.default.createElement(
               'div',
               { className: 'container' },
               _react2.default.createElement(
-                'a',
-                { className: 'navbar-brand', href: '#' },
-                'Navbar'
+                _reactRouterDom.Link,
+                { className: 'navbar-brand', to: '' },
+                'React Redux SSR'
               ),
               _react2.default.createElement(
                 'button',
@@ -612,8 +620,8 @@ var Header = function (_Component) {
                     'li',
                     { className: 'nav-item active' },
                     _react2.default.createElement(
-                      'a',
-                      { className: 'nav-link', href: '#' },
+                      _reactRouterDom.Link,
+                      { className: 'nav-link', to: '/' },
                       'Home ',
                       _react2.default.createElement(
                         'span',
@@ -626,60 +634,13 @@ var Header = function (_Component) {
                     'li',
                     { className: 'nav-item' },
                     _react2.default.createElement(
-                      'a',
-                      { className: 'nav-link', href: '#' },
-                      'Link'
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'li',
-                    { className: 'nav-item dropdown' },
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'nav-link dropdown-toggle', href: '#', id: 'navbarDropdown', role: 'button', 'data-toggle': 'dropdown', 'aria-haspopup': 'true', 'aria-expanded': 'false' },
-                      'Dropdown'
-                    ),
-                    _react2.default.createElement(
-                      'div',
-                      { className: 'dropdown-menu', 'aria-labelledby': 'navbarDropdown' },
-                      _react2.default.createElement(
-                        'a',
-                        { className: 'dropdown-item', href: '#' },
-                        'Action'
-                      ),
-                      _react2.default.createElement(
-                        'a',
-                        { className: 'dropdown-item', href: '#' },
-                        'Another action'
-                      ),
-                      _react2.default.createElement('div', { className: 'dropdown-divider' }),
-                      _react2.default.createElement(
-                        'a',
-                        { className: 'dropdown-item', href: '#' },
-                        'Something else here'
-                      )
-                    )
-                  ),
-                  _react2.default.createElement(
-                    'li',
-                    { className: 'nav-item' },
-                    _react2.default.createElement(
-                      'a',
-                      { className: 'nav-link disabled', href: '#' },
-                      'Disabled'
+                      _reactRouterDom.Link,
+                      { className: 'nav-link', to: '/users' },
+                      'Users'
                     )
                   )
                 ),
-                _react2.default.createElement(
-                  'form',
-                  { className: 'form-inline my-2 my-lg-0' },
-                  _react2.default.createElement('input', { className: 'form-control mr-sm-2', type: 'search', placeholder: 'Search', 'aria-label': 'Search' }),
-                  _react2.default.createElement(
-                    'button',
-                    { className: 'btn btn-outline-success my-2 my-sm-0', type: 'submit' },
-                    'Search'
-                  )
-                )
+                authButton
               )
             )
           )
