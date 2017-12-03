@@ -1,11 +1,12 @@
 const webpack = require('webpack')
 const path = require('path')
+const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
-function resolve(dir) {
-  return path.resolve(__dirname, '..', dir)
-}
+const resolve = dir => path.resolve(__dirname, '..', dir)
+const isProd = process.env.NODE_ENV === 'production'
 
 module.exports = {
+  devtool: isProd ? false : '#cheap-module-source-map',
   resolve: {
     alias: {
       '@': resolve('client')
@@ -26,5 +27,19 @@ module.exports = {
         }
       }
     ]
-  }
+  },
+  performance: {
+    maxEntrypointSize: 300000,
+    hints: isProd ? 'warning' : false
+  },
+  plugins: isProd
+  ? [
+      new webpack.optimize.UglifyJsPlugin({
+        compress: { warnings: false }
+      }),
+      new webpack.optimize.ModuleConcatenationPlugin()
+    ]
+  : [
+      new FriendlyErrorsPlugin()
+    ]
 }
