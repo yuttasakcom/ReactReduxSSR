@@ -8,13 +8,8 @@ export default [
     ...App,
     routes: [
       {
-        ...HomePage,
-        path: '/',
-        exact: true
-      },
-      {
         ...TodoPage,
-        path: '/todos',
+        path: '/',
       }
     ]
   }

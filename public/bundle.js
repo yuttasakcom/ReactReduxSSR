@@ -35746,7 +35746,15 @@ exports.default = function (props) {
       { className: 'widget__message' },
       'Please add an option to get started!'
     ),
-    console.log(props.options)
+    props.options && props.options.map(function (option, i) {
+      return _react2.default.createElement(_Option2.default, {
+        key: i,
+        optionId: option.id,
+        optionText: option.content,
+        count: i + 1,
+        handleDeleteOption: props.handleDeleteOption
+      });
+    })
   );
 };
 
