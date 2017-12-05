@@ -5,7 +5,7 @@
 [Demo](https://rrdssr.herokuapp.com/)
 
 ## Screenshot
-<img src="https://github.com/yuttasakcom/ReactReduxSSR/blob/master/public/statics/img/screenshot.png" />
+<img src="https://github.com/yuttasakcom/ReactReduxSSR/blob/master/public/statics/img/Screenshot.png" />
 
 ## Repo api todos
 [Github](https://github.com/yuttasakcom/NodeJSFile)
