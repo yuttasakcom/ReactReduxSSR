@@ -81,7 +81,6 @@
     "babel-preset-stage-2": "^6.24.1",
     "express": "^4.16.2",
     "express-http-proxy": "^1.1.0",
-    "font-awesome": "^4.7.0",
     "friendly-errors-webpack-plugin": "^1.6.1",
     "jquery": "^3.2.1",
     "popper.js": "^1.12.9",
