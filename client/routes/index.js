@@ -1,6 +1,6 @@
 import React from 'react'
 import HomePage from '@/pages/HomePage'
-import UsersListPage from '@/pages/UsersListPage'
+import TodoPage from '@/pages/TodoPage'
 import App from '@/App'
 
 export default [
@@ -13,8 +13,8 @@ export default [
         exact: true
       },
       {
-        ...UsersListPage,
-        path: '/users',
+        ...TodoPage,
+        path: '/todos',
       }
     ]
   }

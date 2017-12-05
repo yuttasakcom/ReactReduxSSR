@@ -1,20 +1,9 @@
 import React, { Component, Fragment } from 'react'
 import { Link } from 'react-router-dom'
-import { connect } from 'react-redux'
-import { fetchCurrentUser } from '@/actions'
 
 class Header extends Component {
-  componentWillMount() {
-    this.props.fetchCurrentUser()
-  }
-
   render() {
-    const authButton = this.props.auth ? (
-      <a className="btn btn-danger" href="/api/logout">Logout</a>
-    ) : (
-      <a className="btn btn-success" href="/api/auth/google">Login</a>
-    )
-  
+
     return (
       <Fragment>
         <header>
@@ -31,10 +20,10 @@ class Header extends Component {
                     <Link className="nav-link" to="/">Home <span className="sr-only">(current)</span></Link>
                   </li>
                   <li className="nav-item">
-                    <Link className="nav-link" to="/users">Users</Link>
+                    <Link className="nav-link" to="/todos">Todos</Link>
                   </li>
                 </ul>
-                { authButton }
+
               </div>
             </div>
           </nav>
@@ -44,6 +33,4 @@ class Header extends Component {
   }
 }
 
-const mapStateToProps = ({ auth }) => ({ auth })
-
-export default connect(mapStateToProps, { fetchCurrentUser })(Header)
+export default Header

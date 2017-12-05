@@ -71,6 +71,12 @@ module.exports = require("react");
 
 /***/ }),
 /* 1 */
+/***/ (function(module, exports) {
+
+module.exports = require("react-router-config");
+
+/***/ }),
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -82,8 +88,8 @@ Object.defineProperty(exports, "__esModule", {
 
 function _asyncToGenerator(fn) { return function () { var gen = fn.apply(this, arguments); return new Promise(function (resolve, reject) { function step(key, arg) { try { var info = gen[key](arg); var value = info.value; } catch (error) { reject(error); return; } if (info.done) { resolve(value); } else { return Promise.resolve(value).then(function (value) { step("next", value); }, function (err) { step("throw", err); }); } } return step("next"); }); }; }
 
-var FETCH_USERS = exports.FETCH_USERS = 'fetch_users';
-var fetchUsers = exports.fetchUsers = function fetchUsers() {
+var FETCH_TODOS = exports.FETCH_TODOS = 'fetch_todos';
+var fetchTodos = exports.fetchTodos = function fetchTodos() {
   return function () {
     var _ref = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee(dispatch, getState, api) {
       var res;
@@ -92,13 +98,13 @@ var fetchUsers = exports.fetchUsers = function fetchUsers() {
           switch (_context.prev = _context.next) {
             case 0:
               _context.next = 2;
-              return api.get('/users');
+              return api.get('/todos');
 
             case 2:
               res = _context.sent;
 
               dispatch({
-                type: FETCH_USERS,
+                type: FETCH_TODOS,
                 payload: res
               });
 
@@ -116,57 +122,17 @@ var fetchUsers = exports.fetchUsers = function fetchUsers() {
   }();
 };
 
-var FETCH_CURRENT_USER = exports.FETCH_CURRENT_USER = 'fetch_current_user';
-var fetchCurrentUser = exports.fetchCurrentUser = function fetchCurrentUser() {
-  return function () {
-    var _ref2 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee2(dispatch, getState, api) {
-      var res;
-      return regeneratorRuntime.wrap(function _callee2$(_context2) {
-        while (1) {
-          switch (_context2.prev = _context2.next) {
-            case 0:
-              _context2.next = 2;
-              return api.get('/current_user');
-
-            case 2:
-              res = _context2.sent;
-
-              dispatch({
-                type: FETCH_CURRENT_USER,
-                payload: res
-              });
-
-            case 4:
-            case 'end':
-              return _context2.stop();
-          }
-        }
-      }, _callee2, undefined);
-    }));
-
-    return function (_x4, _x5, _x6) {
-      return _ref2.apply(this, arguments);
-    };
-  }();
-};
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports) {
-
-module.exports = require("react-redux");
-
 /***/ }),
 /* 3 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-config");
+module.exports = require("react-router-dom");
 
 /***/ }),
 /* 4 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-dom");
+module.exports = require("react-redux");
 
 /***/ }),
 /* 5 */
@@ -189,9 +155,9 @@ var _HomePage = __webpack_require__(15);
 
 var _HomePage2 = _interopRequireDefault(_HomePage);
 
-var _UsersListPage = __webpack_require__(16);
+var _TodoPage = __webpack_require__(16);
 
-var _UsersListPage2 = _interopRequireDefault(_UsersListPage);
+var _TodoPage2 = _interopRequireDefault(_TodoPage);
 
 var _App = __webpack_require__(17);
 
@@ -203,8 +169,8 @@ exports.default = [_extends({}, _App2.default, {
   routes: [_extends({}, _HomePage2.default, {
     path: '/',
     exact: true
-  }), _extends({}, _UsersListPage2.default, {
-    path: '/users'
+  }), _extends({}, _TodoPage2.default, {
+    path: '/todos'
   })]
 })];
 
@@ -243,7 +209,7 @@ var _createStore = __webpack_require__(19);
 
 var _createStore2 = _interopRequireDefault(_createStore);
 
-var _reactRouterConfig = __webpack_require__(3);
+var _reactRouterConfig = __webpack_require__(1);
 
 var _routes = __webpack_require__(5);
 
@@ -252,11 +218,11 @@ var _routes2 = _interopRequireDefault(_routes);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var app = (0, _express2.default)();
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8000;
 
-app.use('/api', (0, _expressHttpProxy2.default)('http://react-ssr-api.herokuapp.com', {
+app.use('/api', (0, _expressHttpProxy2.default)('http://localhost:3000', {
   proxyReqOptDecorator: function proxyReqOptDecorator(opts) {
-    opts.headers['x-forwarded-host'] = 'localhost:3000';
+    opts.headers['x-forwarded-host'] = 'localhost:' + port;
     return opts;
   }
 }));
@@ -323,11 +289,11 @@ var _react2 = _interopRequireDefault(_react);
 
 var _server = __webpack_require__(13);
 
-var _reactRouterDom = __webpack_require__(4);
+var _reactRouterDom = __webpack_require__(3);
 
-var _reactRedux = __webpack_require__(2);
+var _reactRedux = __webpack_require__(4);
 
-var _reactRouterConfig = __webpack_require__(3);
+var _reactRouterConfig = __webpack_require__(1);
 
 var _serializeJavascript = __webpack_require__(14);
 
@@ -420,9 +386,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(2);
+var _reactRedux = __webpack_require__(4);
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(2);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -432,28 +398,28 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var UsersList = function (_Component) {
-  _inherits(UsersList, _Component);
+var TodoPage = function (_Component) {
+  _inherits(TodoPage, _Component);
 
-  function UsersList() {
-    _classCallCheck(this, UsersList);
+  function TodoPage() {
+    _classCallCheck(this, TodoPage);
 
-    return _possibleConstructorReturn(this, (UsersList.__proto__ || Object.getPrototypeOf(UsersList)).apply(this, arguments));
+    return _possibleConstructorReturn(this, (TodoPage.__proto__ || Object.getPrototypeOf(TodoPage)).apply(this, arguments));
   }
 
-  _createClass(UsersList, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.props.fetchUsers();
+  _createClass(TodoPage, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      this.props.fetchTodos();
     }
   }, {
-    key: 'renderUsers',
-    value: function renderUsers() {
-      return this.props.users.map(function (user) {
+    key: 'renderTodos',
+    value: function renderTodos() {
+      return this.props.todos.map(function (todo) {
         return _react2.default.createElement(
           'li',
-          { key: user.id },
-          user.name
+          { key: todo.id },
+          todo.content
         );
       });
     }
@@ -466,31 +432,32 @@ var UsersList = function (_Component) {
         _react2.default.createElement(
           'div',
           { className: 'container' },
-          'Here\'s a big list of users:',
+          'Here\'s a big list of todos:',
           _react2.default.createElement(
             'ul',
             null,
-            this.renderUsers()
+            this.renderTodos()
           )
         )
       );
     }
   }]);
 
-  return UsersList;
+  return TodoPage;
 }(_react.Component);
 
 var loadData = function loadData(store) {
-  return store.dispatch((0, _actions.fetchUsers)());
+  return store.dispatch((0, _actions.fetchTodos)());
 };
+
 var mapStateToProps = function mapStateToProps(_ref) {
-  var users = _ref.users;
-  return { users: users };
+  var todos = _ref.todos;
+  return { todos: todos };
 };
 
 exports.default = {
   loadData: loadData,
-  component: (0, _reactRedux.connect)(mapStateToProps, { fetchUsers: _actions.fetchUsers })(UsersList)
+  component: (0, _reactRedux.connect)(mapStateToProps, { fetchTodos: _actions.fetchTodos })(TodoPage)
 };
 
 /***/ }),
@@ -508,7 +475,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterConfig = __webpack_require__(3);
+var _reactRouterConfig = __webpack_require__(1);
 
 var _Header = __webpack_require__(18);
 
@@ -547,11 +514,7 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRouterDom = __webpack_require__(4);
-
-var _reactRedux = __webpack_require__(2);
-
-var _actions = __webpack_require__(1);
+var _reactRouterDom = __webpack_require__(3);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -571,22 +534,8 @@ var Header = function (_Component) {
   }
 
   _createClass(Header, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      this.props.fetchCurrentUser();
-    }
-  }, {
     key: 'render',
     value: function render() {
-      var authButton = this.props.auth ? _react2.default.createElement(
-        'a',
-        { className: 'btn btn-danger', href: '/api/logout' },
-        'Logout'
-      ) : _react2.default.createElement(
-        'a',
-        { className: 'btn btn-success', href: '/api/auth/google' },
-        'Login'
-      );
 
       return _react2.default.createElement(
         _react.Fragment,
@@ -635,12 +584,11 @@ var Header = function (_Component) {
                     { className: 'nav-item' },
                     _react2.default.createElement(
                       _reactRouterDom.Link,
-                      { className: 'nav-link', to: '/users' },
-                      'Users'
+                      { className: 'nav-link', to: '/todos' },
+                      'Todos'
                     )
                   )
-                ),
-                authButton
+                )
               )
             )
           )
@@ -652,12 +600,7 @@ var Header = function (_Component) {
   return Header;
 }(_react.Component);
 
-var mapStateToProps = function mapStateToProps(_ref) {
-  var auth = _ref.auth;
-  return { auth: auth };
-};
-
-exports.default = (0, _reactRedux.connect)(mapStateToProps, { fetchCurrentUser: _actions.fetchCurrentUser })(Header);
+exports.default = Header;
 
 /***/ }),
 /* 19 */
@@ -688,7 +631,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (req) {
   var axiosInstance = _axios2.default.create({
-    baseURL: 'http://react-ssr-api.herokuapp.com',
+    baseURL: 'http://localhost:3000',
     headers: { cookie: req.get('cookie') || '' }
   });
 
@@ -716,9 +659,9 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(6);
 
-var _userReducer = __webpack_require__(22);
+var _todoReducer = __webpack_require__(22);
 
-var _userReducer2 = _interopRequireDefault(_userReducer);
+var _todoReducer2 = _interopRequireDefault(_todoReducer);
 
 var _authReducer = __webpack_require__(23);
 
@@ -727,7 +670,7 @@ var _authReducer2 = _interopRequireDefault(_authReducer);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = (0, _redux.combineReducers)({
-  users: _userReducer2.default,
+  todos: _todoReducer2.default,
   auth: _authReducer2.default
 });
 
@@ -742,14 +685,14 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(2);
 
 exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
   var action = arguments[1];
 
   switch (action.type) {
-    case _actions.FETCH_USERS:
+    case _actions.FETCH_TODOS:
       return action.payload.data;
     default:
       return state;
@@ -779,7 +722,7 @@ exports.default = function () {
   }
 };
 
-var _actions = __webpack_require__(1);
+var _actions = __webpack_require__(2);
 
 /***/ }),
 /* 24 */

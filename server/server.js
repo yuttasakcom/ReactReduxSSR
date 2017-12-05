@@ -11,9 +11,9 @@ const app = express()
 const port = process.env.PORT || 8000
 
 app.use('/api',
-  proxy('http://react-ssr-api.herokuapp.com', {
+  proxy('http://localhost:3000', {
     proxyReqOptDecorator(opts) {
-      opts.headers['x-forwarded-host'] = 'localhost:8000'
+      opts.headers['x-forwarded-host'] = `localhost:${port}`
       return opts
     }
   })
@@ -22,7 +22,7 @@ app.use('/api',
 app.use(express.static('public'))
 app.get('*', (req, res) => {
   const store = createStore(req)
-
+  
   const promises = matchRoutes(Routes, req.path)
     .map(({route}) => {
       return route.loadData ? route.loadData(store) : null
