@@ -13,13 +13,7 @@ export default (props) => (
 
     {props.options.length === 0 && <p className="widget__message">Please add an option to get started!</p>}
     {
-      props.options.map((option, i) => 
-        <Option
-          key={i}
-          optionText={option}
-          count={i + 1}
-          handleDeleteOption={props.handleDeleteOption}
-        />)
+      console.log(props.options)
     }
   </div>
 )
