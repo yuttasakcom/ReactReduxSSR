@@ -5,7 +5,7 @@ import axios from 'axios'
 
 export default (req) => {
   const axiosInstance = axios.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://api-todos.herokuapp.com',
     headers: { cookie: req.get('cookie') || '' }
   })
 

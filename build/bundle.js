@@ -220,7 +220,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 var app = (0, _express2.default)();
 var port = process.env.PORT || 8000;
 
-app.use('/api', (0, _expressHttpProxy2.default)('http://localhost:3000', {
+app.use('/api', (0, _expressHttpProxy2.default)('https://api-todos.herokuapp.com', {
   proxyReqOptDecorator: function proxyReqOptDecorator(opts) {
     opts.headers['x-forwarded-host'] = 'localhost:' + port;
     return opts;
@@ -631,7 +631,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 exports.default = function (req) {
   var axiosInstance = _axios2.default.create({
-    baseURL: 'http://localhost:3000',
+    baseURL: 'https://api-todos.herokuapp.com',
     headers: { cookie: req.get('cookie') || '' }
   });
 

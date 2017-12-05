@@ -11,7 +11,7 @@ const app = express()
 const port = process.env.PORT || 8000
 
 app.use('/api',
-  proxy('http://localhost:3000', {
+  proxy('https://api-todos.herokuapp.com', {
     proxyReqOptDecorator(opts) {
       opts.headers['x-forwarded-host'] = `localhost:${port}`
       return opts
