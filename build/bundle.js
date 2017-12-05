@@ -470,12 +470,16 @@ var HomePage = function (_Component) {
       var randomNum = Math.floor(Math.random() * _this.props.todos.length);
       var option = _this.props.todos[randomNum];
       _this.setState(function () {
-        return { selectedOption: option };
+        return { selectedOption: option.content };
       });
     }, _this.handleDeleteOption = function (optionToRemove) {
       _this.props.deleteTodo(optionToRemove);
     }, _this.handleDeleteOptions = function () {
       console.log('handleDeleteOptions');
+    }, _this.handleClearSelectedOption = function () {
+      _this.setState(function () {
+        return { selectedOption: undefined };
+      });
     }, _temp), _possibleConstructorReturn(_this, _ret);
   }
 
@@ -504,7 +508,11 @@ var HomePage = function (_Component) {
               handleAddOption: this.handleAddOption
             })
           )
-        )
+        ),
+        _react2.default.createElement(_OptionModal2.default, {
+          selectedOption: this.state.selectedOption,
+          handleClearSelectedOption: this.handleClearSelectedOption
+        })
       );
     }
   }]);
@@ -772,6 +780,7 @@ var OptionModal = function OptionModal(props) {
     _react2.default.createElement(
       _reactModal2.default,
       {
+        ariaHideApp: false,
         isOpen: !!props.selectedOption,
         onRequestClose: props.handleClearSelectedOption,
         contentLabel: 'Select Option',

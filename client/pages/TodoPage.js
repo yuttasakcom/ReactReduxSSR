@@ -26,7 +26,7 @@ class HomePage extends Component
   handlePick = () => {
     let randomNum = Math.floor(Math.random() * this.props.todos.length)
     let option = this.props.todos[randomNum]
-    this.setState(() => ({selectedOption: option}))
+    this.setState(() => ({selectedOption: option.content}))
   }
 
   handleDeleteOption = (optionToRemove) => {
@@ -37,27 +37,35 @@ class HomePage extends Component
     console.log('handleDeleteOptions')
   }
 
+  handleClearSelectedOption = () => {
+    this.setState(() => ({selectedOption: undefined}))
+  }
+
   render() {
     return (
       <Fragment>
-      <div className="container">
-        <Action 
-          hasOptions={this.props.todos.length > 0}
-          handlePick={this.handlePick}
-        />
-
-        <div className="widget">
-          <Options
-            options={this.props.todos}
-            handleDeleteOption={this.handleDeleteOption}
-            handleDeleteOptions={this.handleDeleteOptions}
+        <div className="container">
+          <Action 
+            hasOptions={this.props.todos.length > 0}
+            handlePick={this.handlePick}
           />
 
-          <AddOption
-            handleAddOption={this.handleAddOption}
-          />
+          <div className="widget">
+            <Options
+              options={this.props.todos}
+              handleDeleteOption={this.handleDeleteOption}
+              handleDeleteOptions={this.handleDeleteOptions}
+            />
+
+            <AddOption
+              handleAddOption={this.handleAddOption}
+            />
+          </div>
         </div>
-      </div>
+        <OptionModal
+          selectedOption={this.state.selectedOption}
+          handleClearSelectedOption={this.handleClearSelectedOption}
+        />
       </Fragment>
     )
   }
