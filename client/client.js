@@ -13,6 +13,9 @@ import Routes from '@/routes'
 
 import axios from 'axios'
 
+import 'normalize.css/normalize.css'
+import '@/assets/styles/styles.scss'
+
 const axiosInstance = axios.create({
   baseURL: '/api'
 })

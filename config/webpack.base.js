@@ -4,6 +4,8 @@ const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 
 const resolve = dir => path.resolve(__dirname, '..', dir)
 const isProd = process.env.NODE_ENV === 'production'
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const CSSExtract = new ExtractTextPlugin('styles.css')
 
 module.exports = {
   devtool: isProd ? false : '#cheap-module-source-map',
@@ -25,6 +27,25 @@ module.exports = {
             'env'
           ]
         }
+      },
+      { 
+        test: /\.s?css$/,
+        use: CSSExtract.extract({
+          use: [
+            {
+              loader: 'css-loader',
+              options: {
+                sourceMap: true,
+              }
+            },
+            {
+              loader: 'sass-loader',
+              options: {
+                sourceMap: true
+              }
+            }
+          ]
+        })
       }
     ]
   },
@@ -37,9 +58,11 @@ module.exports = {
       new webpack.optimize.UglifyJsPlugin({
         compress: { warnings: false }
       }),
-      new webpack.optimize.ModuleConcatenationPlugin()
+      new webpack.optimize.ModuleConcatenationPlugin(),
+      CSSExtract
     ]
   : [
-      new FriendlyErrorsPlugin()
+      new FriendlyErrorsPlugin(),
+      CSSExtract
     ]
 }

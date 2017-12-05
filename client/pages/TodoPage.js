@@ -8,9 +8,7 @@ class TodoPage extends Component {
   }
 
   renderTodos() {
-    return this.props.todos.map(todo => {
-      return <li key={todo.id}>{todo.content}</li>
-    })
+    return this.props.todos.map(todo => <li key={todo.id}>{todo.content}</li>)
   }
 
   render() {

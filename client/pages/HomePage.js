@@ -3,7 +3,9 @@ import React, { Fragment } from 'react'
 const HomePage = () => (
   <Fragment>
     <div className="container">
-      Home Page
+      <div>
+        <h3>Welcome to React Redux SSR</h3>
+      </div>
     </div>
   </Fragment>
 )
