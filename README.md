@@ -2,13 +2,14 @@
 > React Redux SSR from scratch
 
 ## Demo
-[Demo](https://rrdssr.herokuapp.com/)
+[Demo](https://rrdssr.herokuapp.com)
+
+## Apis Todos
+[https://github.com/yuttasakcom/NodeJSFile](https://github.com/yuttasakcom/NodeJSFile)
+> เป็น api ที่เขียนด้วย node read/write file ธรรมดา io ก็ตามที่เห็นครับ ^ ^
 
 ## Screenshot
 <img src="https://github.com/yuttasakcom/ReactReduxSSR/blob/master/statics/img/screenshot.png" />
-
-## Repo api todos
-[Github](https://github.com/yuttasakcom/NodeJSFile)
 
 ## Table of Contents
 - [Code Structure](#code-sturcture)
