@@ -73,16 +73,49 @@ module.exports = require("react");
 /* 1 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-redux");
+module.exports = require("react-router-config");
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports) {
 
-module.exports = require("react-router-config");
+module.exports = require("react-redux");
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+var _react = __webpack_require__(0);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _TodoPage = __webpack_require__(15);
+
+var _TodoPage2 = _interopRequireDefault(_TodoPage);
+
+var _App = __webpack_require__(22);
+
+var _App2 = _interopRequireDefault(_App);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = [_extends({}, _App2.default, {
+  routes: [_extends({}, _TodoPage2.default, {
+    path: '/'
+  })]
+})];
+
+/***/ }),
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -197,46 +230,6 @@ var deleteTodo = exports.deleteTodo = function deleteTodo(id) {
 };
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _HomePage = __webpack_require__(15);
-
-var _HomePage2 = _interopRequireDefault(_HomePage);
-
-var _TodoPage = __webpack_require__(22);
-
-var _TodoPage2 = _interopRequireDefault(_TodoPage);
-
-var _App = __webpack_require__(23);
-
-var _App2 = _interopRequireDefault(_App);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = [_extends({}, _App2.default, {
-  routes: [_extends({}, _HomePage2.default, {
-    path: '/',
-    exact: true
-  }), _extends({}, _TodoPage2.default, {
-    path: '/todos'
-  })]
-})];
-
-/***/ }),
 /* 5 */
 /***/ (function(module, exports) {
 
@@ -267,13 +260,13 @@ var _renderer = __webpack_require__(11);
 
 var _renderer2 = _interopRequireDefault(_renderer);
 
-var _createStore = __webpack_require__(25);
+var _createStore = __webpack_require__(24);
 
 var _createStore2 = _interopRequireDefault(_createStore);
 
-var _reactRouterConfig = __webpack_require__(2);
+var _reactRouterConfig = __webpack_require__(1);
 
-var _routes = __webpack_require__(4);
+var _routes = __webpack_require__(3);
 
 var _routes2 = _interopRequireDefault(_routes);
 
@@ -353,15 +346,15 @@ var _server = __webpack_require__(12);
 
 var _reactRouterDom = __webpack_require__(13);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(2);
 
-var _reactRouterConfig = __webpack_require__(2);
+var _reactRouterConfig = __webpack_require__(1);
 
 var _serializeJavascript = __webpack_require__(14);
 
 var _serializeJavascript2 = _interopRequireDefault(_serializeJavascript);
 
-var _routes = __webpack_require__(4);
+var _routes = __webpack_require__(3);
 
 var _routes2 = _interopRequireDefault(_routes);
 
@@ -421,9 +414,9 @@ var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRedux = __webpack_require__(2);
 
-var _actions = __webpack_require__(3);
+var _actions = __webpack_require__(4);
 
 var _Action = __webpack_require__(16);
 
@@ -823,104 +816,13 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
 var _react = __webpack_require__(0);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactRedux = __webpack_require__(1);
+var _reactRouterConfig = __webpack_require__(1);
 
-var _actions = __webpack_require__(3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var TodoPage = function (_Component) {
-  _inherits(TodoPage, _Component);
-
-  function TodoPage() {
-    _classCallCheck(this, TodoPage);
-
-    return _possibleConstructorReturn(this, (TodoPage.__proto__ || Object.getPrototypeOf(TodoPage)).apply(this, arguments));
-  }
-
-  _createClass(TodoPage, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      this.props.fetchTodos();
-    }
-  }, {
-    key: 'renderTodos',
-    value: function renderTodos() {
-      return this.props.todos.map(function (todo) {
-        return _react2.default.createElement(
-          'li',
-          { key: todo.id },
-          todo.content
-        );
-      });
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        _react.Fragment,
-        null,
-        _react2.default.createElement(
-          'div',
-          { className: 'container' },
-          'Here\'s a big list of todos:',
-          _react2.default.createElement(
-            'ul',
-            null,
-            this.renderTodos()
-          )
-        )
-      );
-    }
-  }]);
-
-  return TodoPage;
-}(_react.Component);
-
-var loadData = function loadData(store) {
-  return store.dispatch((0, _actions.fetchTodos)());
-};
-
-var mapStateToProps = function mapStateToProps(_ref) {
-  var todos = _ref.todos;
-  return { todos: todos };
-};
-
-exports.default = {
-  loadData: loadData,
-  component: (0, _reactRedux.connect)(mapStateToProps, { fetchTodos: _actions.fetchTodos })(TodoPage)
-};
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _react = __webpack_require__(0);
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterConfig = __webpack_require__(2);
-
-var _Header = __webpack_require__(24);
+var _Header = __webpack_require__(23);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -941,7 +843,7 @@ exports.default = {
 };
 
 /***/ }),
-/* 24 */
+/* 23 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -981,7 +883,7 @@ var Header = function Header(props) {
 exports.default = Header;
 
 /***/ }),
-/* 25 */
+/* 24 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -993,15 +895,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _redux = __webpack_require__(5);
 
-var _reduxThunk = __webpack_require__(26);
+var _reduxThunk = __webpack_require__(25);
 
 var _reduxThunk2 = _interopRequireDefault(_reduxThunk);
 
-var _reducers = __webpack_require__(27);
+var _reducers = __webpack_require__(26);
 
 var _reducers2 = _interopRequireDefault(_reducers);
 
-var _axios = __webpack_require__(29);
+var _axios = __webpack_require__(28);
 
 var _axios2 = _interopRequireDefault(_axios);
 
@@ -1019,10 +921,33 @@ exports.default = function (req) {
 };
 
 /***/ }),
-/* 26 */
+/* 25 */
 /***/ (function(module, exports) {
 
 module.exports = require("redux-thunk");
+
+/***/ }),
+/* 26 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _redux = __webpack_require__(5);
+
+var _todoReducer = __webpack_require__(27);
+
+var _todoReducer2 = _interopRequireDefault(_todoReducer);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+exports.default = (0, _redux.combineReducers)({
+  todos: _todoReducer2.default
+});
 
 /***/ }),
 /* 27 */
@@ -1035,30 +960,7 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
-var _redux = __webpack_require__(5);
-
-var _todoReducer = __webpack_require__(28);
-
-var _todoReducer2 = _interopRequireDefault(_todoReducer);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = (0, _redux.combineReducers)({
-  todos: _todoReducer2.default
-});
-
-/***/ }),
-/* 28 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _actions = __webpack_require__(3);
+var _actions = __webpack_require__(4);
 
 exports.default = function () {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : [];
@@ -1077,7 +979,7 @@ exports.default = function () {
 };
 
 /***/ }),
-/* 29 */
+/* 28 */
 /***/ (function(module, exports) {
 
 module.exports = require("axios");
