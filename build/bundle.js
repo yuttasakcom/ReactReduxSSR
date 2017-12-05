@@ -174,6 +174,10 @@ var addTodo = exports.addTodo = function addTodo(option) {
               return api.post('/todos/create', { content: option });
 
             case 2:
+              _context2.next = 4;
+              return api.get('/todos');
+
+            case 4:
               res = _context2.sent;
 
               dispatch({
@@ -181,7 +185,7 @@ var addTodo = exports.addTodo = function addTodo(option) {
                 payload: res
               });
 
-            case 4:
+            case 6:
             case 'end':
               return _context2.stop();
           }
@@ -208,6 +212,10 @@ var deleteTodo = exports.deleteTodo = function deleteTodo(id) {
               return api.delete('/todos/' + id);
 
             case 2:
+              _context3.next = 4;
+              return api.get('/todos');
+
+            case 4:
               res = _context3.sent;
 
               dispatch({
@@ -215,7 +223,7 @@ var deleteTodo = exports.deleteTodo = function deleteTodo(id) {
                 payload: res
               });
 
-            case 4:
+            case 6:
             case 'end':
               return _context3.stop();
           }
@@ -225,6 +233,44 @@ var deleteTodo = exports.deleteTodo = function deleteTodo(id) {
 
     return function (_x7, _x8, _x9) {
       return _ref3.apply(this, arguments);
+    };
+  }();
+};
+
+var DELETE_ALL_TODO = exports.DELETE_ALL_TODO = 'delete_all_todo';
+var deleteAllTodo = exports.deleteAllTodo = function deleteAllTodo(id) {
+  return function () {
+    var _ref4 = _asyncToGenerator( /*#__PURE__*/regeneratorRuntime.mark(function _callee4(dispatch, getState, api) {
+      var res;
+      return regeneratorRuntime.wrap(function _callee4$(_context4) {
+        while (1) {
+          switch (_context4.prev = _context4.next) {
+            case 0:
+              _context4.next = 2;
+              return api.delete('/todos/remove');
+
+            case 2:
+              _context4.next = 4;
+              return api.get('/todos');
+
+            case 4:
+              res = _context4.sent;
+
+              dispatch({
+                type: DELETE_ALL_TODO,
+                payload: res
+              });
+
+            case 6:
+            case 'end':
+              return _context4.stop();
+          }
+        }
+      }, _callee4, undefined);
+    }));
+
+    return function (_x10, _x11, _x12) {
+      return _ref4.apply(this, arguments);
     };
   }();
 };
@@ -475,7 +521,7 @@ var HomePage = function (_Component) {
     }, _this.handleDeleteOption = function (optionToRemove) {
       _this.props.deleteTodo(optionToRemove);
     }, _this.handleDeleteOptions = function () {
-      console.log('handleDeleteOptions');
+      _this.props.deleteAllTodo();
     }, _this.handleClearSelectedOption = function () {
       _this.setState(function () {
         return { selectedOption: undefined };
@@ -530,7 +576,7 @@ var mapStateToProps = function mapStateToProps(_ref2) {
 
 exports.default = {
   loadData: loadData,
-  component: (0, _reactRedux.connect)(mapStateToProps, { addTodo: _actions.addTodo, deleteTodo: _actions.deleteTodo })(HomePage)
+  component: (0, _reactRedux.connect)(mapStateToProps, { addTodo: _actions.addTodo, deleteTodo: _actions.deleteTodo, deleteAllTodo: _actions.deleteAllTodo })(HomePage)
 };
 
 /***/ }),
@@ -981,6 +1027,8 @@ exports.default = function () {
     case _actions.ADD_TODO:
       return action.payload.data;
     case _actions.DELETE_TODO:
+      return action.payload.data;
+    case _actions.DELETE_ALL_TODO:
       return action.payload.data;
     default:
       return state;

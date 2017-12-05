@@ -1,11 +1,19 @@
 const webpack = require('webpack')
 const path = require('path')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 
 const resolve = dir => path.resolve(__dirname, '..', dir)
 const isProd = process.env.NODE_ENV === 'production'
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const CSSExtract = new ExtractTextPlugin('styles.css')
+const CopyStatics = new CopyWebpackPlugin([
+  {
+    from: resolve('statics'),
+    to: 'statics',
+    ignore: ['.*']
+  }
+])
 
 module.exports = {
   devtool: isProd ? false : '#cheap-module-source-map',
@@ -60,10 +68,12 @@ module.exports = {
         compress: { warnings: false }
       }),
       new webpack.optimize.ModuleConcatenationPlugin(),
-      CSSExtract
+      CSSExtract,
+      CopyStatics
     ]
   : [
       new FriendlyErrorsPlugin(),
-      CSSExtract
+      CSSExtract,
+      CopyStatics
     ]
 }

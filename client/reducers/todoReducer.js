@@ -1,4 +1,4 @@
-import { FETCH_TODOS, ADD_TODO, DELETE_TODO } from '@/actions'
+import { FETCH_TODOS, ADD_TODO, DELETE_TODO, DELETE_ALL_TODO } from '@/actions'
 
 export default (state = [], action) => {
   switch (action.type) {
@@ -7,6 +7,8 @@ export default (state = [], action) => {
     case ADD_TODO:
       return action.payload.data
     case DELETE_TODO:
+      return action.payload.data
+    case DELETE_ALL_TODO:
       return action.payload.data
     default:
       return state

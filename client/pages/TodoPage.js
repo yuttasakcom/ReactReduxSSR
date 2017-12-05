@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { connect } from 'react-redux'
-import { fetchTodos, addTodo, deleteTodo } from '@/actions'
+import { fetchTodos, addTodo, deleteTodo, deleteAllTodo } from '@/actions'
 
 import Action from '@/components/Action'
 import Options from '@/components/Options'
@@ -34,7 +34,7 @@ class HomePage extends Component
   }
 
   handleDeleteOptions = () => {
-    console.log('handleDeleteOptions')
+    this.props.deleteAllTodo()
   }
 
   handleClearSelectedOption = () => {
@@ -76,5 +76,5 @@ const mapStateToProps = ({todos}) => ({todos})
 
 export default {
   loadData,
-  component: connect(mapStateToProps, { addTodo, deleteTodo })(HomePage)
+  component: connect(mapStateToProps, { addTodo, deleteTodo, deleteAllTodo })(HomePage)
 }
